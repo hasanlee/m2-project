@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <div class="title">To-Do List</div>
+        <div class="toolbar"><img class="icon" src="./icons/sort.png" /></div>
+        <div class="list">
+          <div class="list-item">
+            <input name="text" id="text" class="todo-input" />
+            <img class="icon" src="./icons/close.png" onclick="clearInput" />
+          </div>
+          <div class="list-item">
+            <p>task 1</p>
+            <img class="icon" src="./icons/close.png" />
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Add ToDo</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./app.js"></script>
+</html>
