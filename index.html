@@ -12,19 +12,22 @@
       <div class="card-header"></div>
       <div class="card-body">
         <div class="title">To-Do List</div>
-        <div class="toolbar"><img class="icon" src="./icons/sort.png" /></div>
+        <div class="toolbar">
+          <img class="icon" src="./icons/sortAsc.png" id="sortBtn" />
+        </div>
         <div class="list">
           <div class="list-item">
             <input name="text" id="text" class="todo-input" />
-            <img class="icon" src="./icons/close.png" onclick="clearInput" />
-          </div>
-          <div class="list-item">
-            <p>task 1</p>
-            <img class="icon" src="./icons/close.png" />
+            <img
+              class="icon"
+              id="deleteBtn"
+              src="./icons/delete.png"
+              onclick="clearInput"
+            />
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn">Add ToDo</button>
+          <button class="btn" id="addTodoBtn">Add ToDo</button>
         </div>
       </div>
     </div>
