@@ -42,6 +42,7 @@ body {
   width: 25px;
   height: 15px;
   cursor: pointer;
+  object-fit: contain;
 }
 /* .list {
   display: block;
