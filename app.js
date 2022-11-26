@@ -6,6 +6,7 @@ const list = document.querySelector(".list");
 const addTodoBtn = document.querySelector("#addTodoBtn");
 const sortBtn = document.querySelector("#sortBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
+const todoBox = document.querySelector(".todo-box");
 
 document.addEventListener("load", getTodos());
 addTodoBtn.addEventListener("click", (e) => {
@@ -13,7 +14,6 @@ addTodoBtn.addEventListener("click", (e) => {
   let text = textInput.value;
   addTodo(id, text);
   textInput.value = "";
-  getTodos();
 });
 textInput.addEventListener("keyup", (e) => {
   if (e.code == "Enter") {
@@ -21,7 +21,6 @@ textInput.addEventListener("keyup", (e) => {
     let text = textInput.value;
     addTodo(id, text);
     textInput.value = "";
-    getTodos();
   }
 });
 sortBtn.addEventListener("click", sortList);
@@ -29,12 +28,13 @@ deleteBtn.addEventListener("click", () => {
   textInput.value = "";
 });
 function addTodo(id, text) {
-  if (text != undefined && text != "") {
+  if (text != undefined && text != "" && todos.length < 5) {
     todos.push({
       id: id,
       text: text,
     });
   }
+  getTodos();
 }
 function getTodos() {
   todos.length <= 0
@@ -52,6 +52,9 @@ function getTodos() {
     <path d="M6 14L14 6" stroke="#C4C4C4"/>
     </svg>`;
     list.append(div);
+    todos.length == 5
+      ? (todoBox.style.display = "none")
+      : (todoBox.style.display = "flex");
   });
 }
 function removeTodo(id, el) {
