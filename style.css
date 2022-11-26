@@ -99,6 +99,9 @@ input:focus {
   text-align: center;
   cursor: pointer;
 }
+.btn span {
+  margin-left: 12%;
+}
 .btn::before {
   content: "+";
   display: flex;
