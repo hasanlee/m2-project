@@ -15,17 +15,30 @@
         <div class="toolbar">
           <img class="icon" src="./icons/sortAsc.png" id="sortBtn" />
         </div>
-        <div class="list">
-          <div class="list-item">
-            <input name="text" id="text" class="todo-input" />
-            <img
-              class="icon"
-              id="deleteBtn"
-              src="./icons/delete.png"
-              onclick="clearInput"
+        <div class="todo-box">
+          <input name="text" id="text" class="todo-input" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            id="deleteBtn"
+            class="icon deleteBtn"
+          >
+            <rect
+              x="0.5"
+              y="0.5"
+              width="19"
+              height="19"
+              rx="9.5"
+              stroke="#C4C4C4"
             />
-          </div>
+            <path d="M6 6L14 14" stroke="#C4C4C4" />
+            <path d="M6 14L14 6" stroke="#C4C4C4" />
+          </svg>
         </div>
+        <div class="list"></div>
         <div class="card-footer">
           <button class="btn" id="addTodoBtn">Add ToDo</button>
         </div>
