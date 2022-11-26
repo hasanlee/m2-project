@@ -28,7 +28,12 @@ deleteBtn.addEventListener("click", () => {
   textInput.value = "";
 });
 function addTodo(id, text) {
-  if (text != undefined && text != "" && todos.length < 5) {
+  if (
+    text != undefined &&
+    text != "" &&
+    todos.length < 5 &&
+    text.trim() != ""
+  ) {
     todos.push({
       id: id,
       text: text,
