@@ -45,8 +45,6 @@ function getTodos() {
     let div = document.createElement("div");
     div.classList.add("list-item");
     div.setAttribute("data-order", index);
-    div.addEventListener("drag", drag);
-    div.addEventListener("drop", drop);
     div.innerHTML = `<p>${todo.text}</p>
     <svg onclick="removeTodo('${todo.id}',this)" width="20" height="20" class="icon deleteBtn" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="#C4C4C4"/>
