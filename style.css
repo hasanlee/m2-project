@@ -61,10 +61,19 @@ body {
   align-items: center;
 }
 .list-item p {
-  text-align: center;
-  line-height: 10px;
-  cursor: text;
+  text-align: left;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 180px;
 }
+
+.list-item p:hover {
+  white-space: unset;
+  text-overflow: unset;
+}
+
 .todo-box {
   box-sizing: border-box;
   border: 1px solid #c4c4c4;
