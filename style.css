@@ -36,8 +36,16 @@ body {
 }
 .toolbar {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin: 11px 11px 11px 11px;
+}
+.toolbar .count {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 12px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #c4c4c4;
 }
 .icon {
   width: 25px;
@@ -68,12 +76,10 @@ body {
   white-space: nowrap;
   width: 180px;
 }
-
 .list-item p:hover {
   white-space: unset;
   text-overflow: unset;
 }
-
 .todo-box {
   box-sizing: border-box;
   border: 1px solid #c4c4c4;
@@ -159,4 +165,24 @@ input:focus {
 }
 .over {
   transform: scale(1.1, 1.1);
+}
+
+/*  */
+.premium {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #000000;
+  margin-bottom: 5px;
+}
+.premium > button {
+  border-radius: 5px;
+  border: 0px;
+  /* background-color: #9a53f1a2; */
+  color: #833ae0;
+  cursor: pointer;
 }

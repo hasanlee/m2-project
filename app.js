@@ -1,4 +1,6 @@
 var todos = [];
+var limit = 5;
+var premium = false;
 var sortAsc = false;
 
 const textInput = document.querySelector("#text");
@@ -7,6 +9,8 @@ const addTodoBtn = document.querySelector("#addTodoBtn");
 const sortBtn = document.querySelector("#sortBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
 const todoBox = document.querySelector(".todo-box");
+const premiumBtn = document.querySelector(".premium>button");
+const countTodo = document.querySelector(".toolbar .count");
 
 document.addEventListener("load", getTodos());
 addTodoBtn.addEventListener("click", (e) => {
@@ -27,11 +31,12 @@ sortBtn.addEventListener("click", sortList);
 deleteBtn.addEventListener("click", () => {
   textInput.value = "";
 });
+premiumBtn.addEventListener("click", buyPremium);
 function addTodo(id, text) {
   if (
     text != undefined &&
     text != "" &&
-    todos.length < 5 &&
+    todos.length < limit &&
     text.trim() != ""
   ) {
     todos.push({
@@ -42,6 +47,7 @@ function addTodo(id, text) {
   getTodos();
 }
 function getTodos() {
+  checkPremium();
   todos.length <= 0
     ? (list.style.border = "0px")
     : (list.style.border = "1px solid #c4c4c4");
@@ -65,10 +71,11 @@ function getTodos() {
     <path d="M6 14L14 6" stroke="#C4C4C4"/>
     </svg>`;
     list.append(div);
-    todos.length == 5
+    todos.length == limit
       ? (todoBox.style.display = "none")
       : (todoBox.style.display = "flex");
   });
+  countTodo.innerHTML = `Task : ${todos.length}/${limit}`;
 }
 function removeTodo(id, el) {
   let index = todos.findIndex((todo) => todo.id == id);
@@ -107,6 +114,23 @@ function uuidv4() {
       (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
     ).toString(16)
   );
+}
+function buyPremium() {
+  document.body.style.cursor = "wait";
+  premiumBtn.style.cursor = "wait";
+  setTimeout(() => {
+    console.log("sdsd");
+    document.body.style.cursor = "unset";
+    premiumBtn.style.cursor = "unset";
+    premium = true;
+    getTodos();
+  }, 2000);
+}
+function checkPremium() {
+  if (premium) {
+    premiumBtn.style.display = "none";
+    limit = 10;
+  }
 }
 // Draggable
 var remove = document.querySelector(".draggable");
