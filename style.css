@@ -20,7 +20,7 @@ body {
   display: flexbox;
   padding: 22px;
 }
-.card-footer {
+.button-bar {
   display: flex;
   justify-content: center;
 }
@@ -137,7 +137,16 @@ input:focus {
 .icon.deleteBtn:hover {
   fill: #833ae0;
 }
-
+.card-footer {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  height: 92px;
+  transition: height 300ms ease-in-out;
+  -webkit-transition: height 300ms ease-in-out;
+  -moz-transition: height 300ms ease-in-out;
+}
 /* Draggable */
 .list-item.draggable {
   will-change: transform;

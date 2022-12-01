@@ -10,14 +10,16 @@ var premium = false;
 var sortAsc = false;
 
 const textInput = document.querySelector("#text");
-const list = document.querySelector(".list");
+const todoList = document.querySelector(".list");
 const addTodoBtn = document.querySelector("#addTodoBtn");
 const sortBtn = document.querySelector("#sortBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
 const todoBox = document.querySelector(".todo-box");
 const premiumBtn = document.querySelector(".premium>button");
 const countTodo = document.querySelector(".toolbar .count");
+const footer = document.querySelector(".card-footer");
 
+//Events
 document.addEventListener("load", getTodos());
 addTodoBtn.addEventListener("click", (e) => {
   let id = uuidv4();
@@ -38,6 +40,7 @@ deleteBtn.addEventListener("click", () => {
   textInput.value = "";
 });
 premiumBtn.addEventListener("click", buyPremium);
+//Functions
 function addTodo(id, text) {
   if (
     text != undefined &&
@@ -52,33 +55,38 @@ function addTodo(id, text) {
 function getTodos() {
   checkPremium();
   todos.length <= 0
-    ? (list.style.border = "0px")
-    : (list.style.border = "1px solid #c4c4c4");
-  list.replaceChildren();
-  todos.forEach((todo, index) => {
-    let div = document.createElement("div");
-    div.classList.add("list-item");
-    div.classList.add("draggable");
-    div.setAttribute("draggable", true);
-    div.setAttribute("data-order", index);
-    div.addEventListener("dragstart", dragStart, false);
-    div.addEventListener("dragenter", dragEnter, false);
-    div.addEventListener("dragover", dragOver, false);
-    div.addEventListener("dragleave", dragLeave, false);
-    div.addEventListener("drop", dragDrop, false);
-    div.addEventListener("dragend", dragEnd, false);
-    div.innerHTML = `<p>${todo.text}</p>
+    ? (todoList.style.border = "0px")
+    : (todoList.style.border = "1px solid #c4c4c4");
+  todoList.replaceChildren();
+  todos.forEach((todo) => {
+    createTodoComponent(todo, todoList);
+    toggleAddComponent();
+  });
+  countTodo.innerHTML = `Task : ${todos.length}/${limit}`;
+}
+function toggleAddComponent() {
+  todos.length == limit
+    ? (footer.style.display = "none")
+    : (footer.style.display = "block");
+}
+function createTodoComponent(todo, list) {
+  let div = document.createElement("div");
+  div.classList.add("list-item");
+  div.classList.add("draggable");
+  div.setAttribute("draggable", true);
+  div.addEventListener("dragstart", dragStart, false);
+  div.addEventListener("dragenter", dragEnter, false);
+  div.addEventListener("dragover", dragOver, false);
+  div.addEventListener("dragleave", dragLeave, false);
+  div.addEventListener("drop", dragDrop, false);
+  div.addEventListener("dragend", dragEnd, false);
+  div.innerHTML = `<p>${todo.text}</p>
     <svg onclick="removeTodo('${todo.id}',this)" width="20" height="20" class="icon deleteBtn" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="#C4C4C4"/>
     <path d="M6 6L14 14" stroke="#C4C4C4"/>
     <path d="M6 14L14 6" stroke="#C4C4C4"/>
     </svg>`;
-    list.append(div);
-    todos.length == limit
-      ? (todoBox.style.display = "none")
-      : (todoBox.style.display = "flex");
-  });
-  countTodo.innerHTML = `Task : ${todos.length}/${limit}`;
+  list.append(div);
 }
 function removeTodo(id, el) {
   let index = todos.findIndex((todo) => todo.id == id);
@@ -136,7 +144,7 @@ function checkPremium() {
     limit = 10;
   }
 }
-// Draggable
+// Draggable functions
 var remove = document.querySelector(".draggable");
 function dragStart(e) {
   this.style.opacity = "0.4";
