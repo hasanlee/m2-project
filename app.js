@@ -65,9 +65,12 @@ function getTodos() {
   countTodo.innerHTML = `Task : ${todos.length}/${limit}`;
 }
 function toggleAddComponent() {
+  // todos.length == limit
+  //   ? (footer.style.display = "none")
+  //   : (footer.style.display = "block");
   todos.length == limit
-    ? (footer.style.display = "none")
-    : (footer.style.display = "block");
+    ? footer.classList.add("hide")
+    : footer.classList.remove("hide");
 }
 function createTodoComponent(todo, list) {
   let div = document.createElement("div");
