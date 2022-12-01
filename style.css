@@ -142,10 +142,6 @@ input:focus {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  height: 92px;
-  transition: height 300ms ease-in-out;
-  -webkit-transition: height 300ms ease-in-out;
-  -moz-transition: height 300ms ease-in-out;
 }
 /* Draggable */
 .list-item.draggable {
