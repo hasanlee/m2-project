@@ -1,3 +1,9 @@
+class Todo {
+  constructor(text, id) {
+    this.text = text;
+    this.id = id;
+  }
+}
 var todos = [];
 var limit = 5;
 var premium = false;
@@ -39,10 +45,7 @@ function addTodo(id, text) {
     todos.length < limit &&
     text.trim() != ""
   ) {
-    todos.push({
-      id: id,
-      text: text,
-    });
+    todos.push(new Todo(text, id));
   }
   getTodos();
 }
@@ -64,7 +67,7 @@ function getTodos() {
     div.addEventListener("dragleave", dragLeave, false);
     div.addEventListener("drop", dragDrop, false);
     div.addEventListener("dragend", dragEnd, false);
-    div.innerHTML = `<p ondblclick="editTodo('${todo.id}',this)">${todo.text}</p>
+    div.innerHTML = `<p>${todo.text}</p>
     <svg onclick="removeTodo('${todo.id}',this)" width="20" height="20" class="icon deleteBtn" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="#C4C4C4"/>
     <path d="M6 6L14 14" stroke="#C4C4C4"/>
@@ -88,6 +91,7 @@ function removeTodo(id, el) {
 function editTodo(id) {
   let index = todos.findIndex((todo) => todo.id == id);
   if (index > -1) {
+    console.log(todos[index]);
     textInput.value = todos[index].text;
   }
 }
